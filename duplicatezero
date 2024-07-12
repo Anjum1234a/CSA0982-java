@@ -1,0 +1,30 @@
+import java.util.Arrays;
+
+public class DuplicateZeros {
+    public static void duplicateZeros(int[] arr) {
+        int n = arr.length;
+        int countZeros = 0;
+        for (int num : arr) {
+            if (num == 0) {
+                countZeros++;
+            }
+        }
+        for (int i = n - 1; i >= 0; i--) {
+            if (i + countZeros < n) {
+                arr[i + countZeros] = arr[i];
+            }
+if (arr[i] == 0) {
+                countZeros--;
+                if (i + countZeros < n) {
+                    arr[i + countZeros] = 0;
+                }
+            }
+        }
+    }
+
+    public static void main(String[] args) {
+        int[] arr = {1, 0, 2, 3, 0, 4, 5, 0};
+        duplicateZeros(arr);
+        System.out.println(Arrays.toString(arr)); 
+    }
+}
